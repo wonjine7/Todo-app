@@ -3,12 +3,13 @@ import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
  
-function createBulkTodos() {
+
+function createBulkTodos(){
   const array = [];
-  for (let i = 1; i <= 2500; i++) {
+  for (let i=1; i<=2500; i++){
     array.push({
-      id: i,
-      text: '할 일',
+      id:i,
+      text:`할 일${i}`,
       checked: false,
     });
   }
@@ -48,20 +49,23 @@ const App = () => {
         text,
         checked: false,
       };
+
       dispatch({ type: 'INSERT', todo});
       nextId.current += 1; // nextId 1씩 더하기
-    },[],
-  );
+    },[]);
+
 
   const onRemove = useCallback(
     id => {
       dispatch({ type: 'REMOVE', id });
-    },[],);
+    },[]);
 
   const onToggle = useCallback(
     id => {
       dispatch({ type: 'TOGGLE', id });
   }, []);
+
+
 
   return (
     <TodoTemplate>
